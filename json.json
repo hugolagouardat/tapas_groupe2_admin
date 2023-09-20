@@ -1,0 +1,14 @@
+[
+    {
+        "id":"1",
+        "type":"viande"
+    },
+    {
+        "id":"2",
+        "type":"vegetarienne"
+    },
+    {
+        "id":"3",
+        "type":"mixte"
+    }
+]
