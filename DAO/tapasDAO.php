@@ -19,18 +19,12 @@ class tapasDAO
 	public static function get($id)
     {
         $tapas = null;
-
-        $connex = DatabaseLinker::getConnexion();
-
-        $state = $connex->prepare('SELECT * FROM tapas WHERE idTapas = :id');
-        $state->bindValue(":id", $id);
-        $state->execute();
-        $resultats = $state->fetchAll();
-
+		$resultats = RequestSender::sendGetRequest("tapas");
+		$resultats = json_decode($resultats);
         if (sizeof($resultats) > 0) {
             $result = $resultats[0];
-			$tapas = new tapasDTO($result["idTapas"], $result["image"], $result["prix"], $result["description"], $result["nom"]);
-			$tapas->setIdTapas($result["idTapas"]);
+			$tapas= new tapasDTO($result->idTapas, $result->image, $result->prix, $result->description, $result->nom);
+			$tapas->setIdTapas($result->idTapas);
         }
 
         return $tapas;

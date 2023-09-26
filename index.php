@@ -13,7 +13,7 @@
 
 include_once("tools/Autoloader.php");
 spl_autoload_register('includeFileWithClassName');
-$tapas = tapasDAO::getAlltapas();
+$tapas = tapasDAO::get(1);
 var_dump($tapas);
 ?>
 	

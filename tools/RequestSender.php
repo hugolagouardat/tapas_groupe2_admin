@@ -7,7 +7,7 @@ class RequestSender {
 	public static function sendGetRequest($url_request) {
 
 		$ch = curl_init();
-		// add post & delete & put
+		// add delete & put
 		curl_setopt($ch, CURLOPT_URL, RequestSender::$webservice_url.$url_request);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($ch, CURLOPT_PROXY, '');
@@ -39,7 +39,7 @@ class RequestSender {
 		}
 
 		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_URL, $url_request);
+		curl_setopt($ch, CURLOPT_URL, RequestSender::$webservice_url.$url_request);
 		curl_setopt($ch, CURLOPT_POST, true);
 		curl_setopt($ch, CURLOPT_POSTFIELDS, $data_encoded);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -66,7 +66,7 @@ class RequestSender {
 	public static function sendDeleteRequest($url_request) {
 
 		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_URL, $url_request);
+		curl_setopt($ch, CURLOPT_URL, RequestSender::$webservice_url.$url_request);
 		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($ch, CURLOPT_PROXY, '');
@@ -97,7 +97,7 @@ class RequestSender {
 		}
 
 		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_URL, $url_request);
+		curl_setopt($ch, CURLOPT_URL, RequestSender::$webservice_url.$url_request);
 		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
 		curl_setopt($ch, CURLOPT_POSTFIELDS, $data_encoded);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
