@@ -1,12 +1,14 @@
 <?php
 
 class RequestSender {
+	private static $webservice_url = "http://localhost/projet/restaurant_tapas/tapas_groupe2_webservice/server/";
 
 	// envoi de la requête avec GET (récupération de données)
 	public static function sendGetRequest($url_request) {
 
 		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_URL, $url_request);
+		// add post & delete & put
+		curl_setopt($ch, CURLOPT_URL, RequestSender::$webservice_url.$url_request);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($ch, CURLOPT_PROXY, '');
 		curl_setopt(
@@ -22,9 +24,10 @@ class RequestSender {
 
 		curl_close($ch);
 		
-		$reponse = ["data" => $data, "status_code_header" => $codeHttp];
+		
+
 	
-		return $reponse;
+		return $data;
 	}
 
 	// envoi de la requête avec POST (ajout de données), format des données : objet ou tableau php
