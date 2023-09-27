@@ -1,5 +1,4 @@
 <?php
-//$connex = DatabaseLinker::getConnexion();
 class categorieDAO
 {
     public static function getAllcategories()
