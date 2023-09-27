@@ -21,7 +21,7 @@ class tableRestoDAO {
         $table = null;
         $resultats = RequestSender::sendGetRequest("table");
         $resultats = json_decode($resultats);
-        if (sizeof($resultats) > 0) {
+        if ($resultats != null && sizeof($resultats) > 0) {
             $result = $resultats[0];
             $table = new tableRestoDTO($result->idTable, $result->etat);
             $table->setIdTable($result->idTable);

@@ -8,6 +8,7 @@ class contenueCommandeDAO {
         $contenues = array();
         $resultats = RequestSender::sendGetRequest("commandes");
         $resultats = json_decode($resultats);
+        var_dump($resultats);
         foreach ($resultats as $result) {
             $contenu = new contenueCommandeDTO($result->commandeId, $result->tapasId, $result->nombre);
             $contenues[] = $contenu;
@@ -20,7 +21,7 @@ class contenueCommandeDAO {
         $contenu = null;
         $resultats = RequestSender::sendGetRequest("commandes");
         $resultats = json_decode($resultats);
-        if (sizeof($resultats) > 0) {
+        if ($resultats != null && sizeof($resultats) > 0) {
             $result = $resultats[0];
             $contenu = new contenueCommandeDTO($result->commandeId, $result->tapasId, $result->nombre);
         }

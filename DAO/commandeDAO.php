@@ -20,7 +20,7 @@ class commandeDAO
 		$commande = null;
 		$resultats = RequestSender::sendGetRequest("commandes");
 		$resultats = json_decode($resultats);
-        if (sizeof($resultats) > 0) {
+        if ($resultats != null && sizeof($resultats) > 0) {
             $result = $resultats[0];
 			$commande= new CommandeDTO($result->idCommande, $result->tableId,$result->effectue);
 			$commande->setIdCommande($result->idCommande);

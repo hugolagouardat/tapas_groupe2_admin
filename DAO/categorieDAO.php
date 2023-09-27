@@ -20,7 +20,8 @@ class categorieDAO
         $categoriee = null;
         $resultats = RequestSender::sendGetRequest("categories");
         $resultats = json_decode($resultats);
-        if (sizeof($resultats) > 0) {
+        
+        if ($resultats != null && sizeof($resultats) > 0) {
             $result = $resultats[0];
             $categoriee = new categorieDTO($result->idCategorie, $result->libelle);
             $categoriee->setIdcategorie($result->idCategorie);

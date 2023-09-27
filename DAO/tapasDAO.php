@@ -21,7 +21,7 @@ class tapasDAO
         $tapas = null;
 		$resultats = RequestSender::sendGetRequest("tapas");
 		$resultats = json_decode($resultats);
-        if (sizeof($resultats) > 0) {
+        if ($resultats != null && sizeof($resultats) > 0) {
             $result = $resultats[0];
 			$tapas= new tapasDTO($result->idTapas, $result->image, $result->prix, $result->description, $result->nom);
 			$tapas->setIdTapas($result->idTapas);
