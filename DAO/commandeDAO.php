@@ -7,7 +7,7 @@ class commandeDAO
 	{
 		$commande = array();
         $resultats = RequestSender::sendGetRequest("commandes");
-        $resultats = json_decode($resultats);
+        $resultats = json_decode($resultats, true);
         foreach ($resultats as $result) {
             $commandee = new CommandeDTO($result->commandeId, $result->tableId, $result->effectue);
             $commande[] = $commandee;

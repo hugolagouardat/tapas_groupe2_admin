@@ -7,7 +7,7 @@ class contenueCommandeDAO {
     public static function getAllcontenues() {
         $contenues = array();
         $resultats = RequestSender::sendGetRequest("commandes");
-        $resultats = json_decode($resultats);
+        $resultats = json_decode($resultats, true);
         var_dump($resultats);
         foreach ($resultats as $result) {
             $contenu = new contenueCommandeDTO($result->commandeId, $result->tapasId, $result->nombre);

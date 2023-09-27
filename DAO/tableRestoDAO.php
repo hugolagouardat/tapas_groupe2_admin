@@ -7,7 +7,7 @@ class tableRestoDAO {
     public static function getAlltable() {
         $tables = array();
         $resultats = RequestSender::sendGetRequest("table");
-        $resultats = json_decode($resultats);
+        $resultats = json_decode($resultats, true);
         foreach ($resultats as $result) {
             $table = new tableRestoDTO($result->idTable, $result->etat);
             $table->setIdTable($result->idTable);
