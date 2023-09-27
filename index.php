@@ -13,8 +13,13 @@
 
 include_once("tools/Autoloader.php");
 spl_autoload_register('includeFileWithClassName');
-$tapas = tapasDAO::get(1);
-var_dump($tapas);
+ 
+echo("gettapas");
+var_dump(tapasDAO::get(1));
+echo("getAlltapas");
+var_dump(tapasDAO::getAlltapas());
+
+
 ?>
 	
 </body>
