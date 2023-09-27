@@ -14,11 +14,18 @@
 include_once("tools/Autoloader.php");
 spl_autoload_register('includeFileWithClassName');
  
-echo("gettapas");
+echo("gettapas<br>");
 var_dump(tapasDAO::get(1));
-echo("getAlltapas");
+echo("<br>getAlltapas<br>");
 var_dump(tapasDAO::getAlltapas());
-
+echo("<br>getAllTable<br>");
+var_dump(tableRestoDAO::getAlltable());
+echo("<br>getTable<br>");
+var_dump(tableRestoDAO::get(1));
+echo("<br>getAllContenuCommande<br>");
+var_dump(contenueCommandeDAO::getAllcontenues());
+echo("<br>getContenuCommande<br>");
+var_dump(contenueCommandeDAO::get(1));
 
 ?>
 	
