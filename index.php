@@ -14,11 +14,11 @@
 include_once("tools/Autoloader.php");
 spl_autoload_register('includeFileWithClassName');
  
-echo("gettapas<br>");
+/*echo("gettapas<br>");
 var_dump(tapasDAO::get(1));
 echo("<br>getAlltapas<br>");
 var_dump(tapasDAO::getAlltapas());
-
+*/
 /*
 echo("<br>getAllTable<br>");
 var_dump(tableRestoDAO::getAlltable());
@@ -40,7 +40,7 @@ var_dump(categorieDAO::get(1));
 echo("<br>getAllCategorie<br>");
 var_dump(categorieDAO::getAllcategories());*/
 
-contenueCommandeDAO::getAllcontenues();
+var_dump(contenueCommandeDAO::get(1));
 ?>
 	
 </body>
