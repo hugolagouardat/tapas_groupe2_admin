@@ -41,6 +41,8 @@ spl_autoload_register('includeFileWithClassName');
 //var_dump(categorieDAO::getAllcategories());
 
 //var_dump(contenueCommandeDAO::get(1));
+var_dump(CategorieDAO::getAllcategories());
+
 ?>
 	
 </body>

@@ -1,5 +1,5 @@
 <?php
-//$connex = DatabaseLinker::getConnexion();
+include_once("tools/RequestSender.php");
 class categorieDAO
 {
     public static function getAllcategories()
@@ -28,4 +28,11 @@ class categorieDAO
 
         return $categoriee;
     }
+
+    public static function updatecategorie(){
+        
+
+    }
+
+
 }
