@@ -18,6 +18,7 @@ echo("gettapas<br>");
 var_dump(tapasDAO::get(1));
 echo("<br>getAlltapas<br>");
 var_dump(tapasDAO::getAlltapas());
+
 /*
 echo("<br>getAllTable<br>");
 var_dump(tableRestoDAO::getAlltable());

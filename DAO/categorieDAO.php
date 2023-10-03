@@ -7,14 +7,15 @@ class categorieDAO
         $categorie = array();
         $resultats = RequestSender::sendGetRequest("categories");
         $resultats = json_decode($resultats, true);
-        foreach ($resultats as $result) {
-            $categoriee = new categorieDTO($result->idCategorie, $result->libelle);
-            $categoriee->setIdcategorie($result->idCategorie);
-            $categorie[] = $categoriee;
+        if (is_array($resultats)) {
+            foreach ($resultats as $result) {
+                $categoriee = new categorieDTO($result->idCategorie, $result->libelle);
+                $categoriee->setIdcategorie($result->idCategorie);
+                $categorie[] = $categoriee;
+            }
         }
 
         return $categorie;
-        
     }
     public static function get($id)
     {
