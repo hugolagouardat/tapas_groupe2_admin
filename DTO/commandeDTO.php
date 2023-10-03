@@ -71,7 +71,7 @@ class commandeDTO implements JsonSerializable
         return $this;
     }
     // cette fonction définit la manière dont les attributs privés (donc normalement inaccessibles) de l'objet vont être encodés en JSON
-    public function jsonSerialize()
+    public function jsonSerialize():mixed
     {
         return array(
             'idCommande' => $this->idCommande,

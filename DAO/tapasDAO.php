@@ -8,7 +8,7 @@ class tapasDAO
 		$tapas = array();
 		$resultats = RequestSender::sendGetRequest("tapas");
 		$resultats = json_decode($resultats, true); // Decoding as an associative array
-	
+		
 		if (is_array($resultats)) {
 			foreach ($resultats as $result) {
 				// Notice the change from object syntax to array syntax
