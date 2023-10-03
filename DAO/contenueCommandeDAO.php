@@ -23,8 +23,8 @@ class contenueCommandeDAO {
 
         if ($resultats != null && sizeof($resultats) > 0) {
             $result = $resultats[0];
-            $contenu = new contenueCommandeDTO($result["idCommande"], $result["tableId"], $result["effectue"]);
-            $contenu->setCommandeId($result["idCommande"]);
+            $contenu = new contenueCommandeDTO($result->idCommande, $result->tableId, $result->effectue);
+            $contenu->setCommandeId($result->idCommande);
         }
 
         return $contenu;
