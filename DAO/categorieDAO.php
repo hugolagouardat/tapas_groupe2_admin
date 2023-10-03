@@ -8,8 +8,7 @@ class categorieDAO
         $resultats = RequestSender::sendGetRequest("categories");
         $resultats = json_decode($resultats, true);
         foreach ($resultats as $result) {
-            $categoriee = new categorieDTO($result->idCategorie, $result->libelle);
-            $categoriee->setIdcategorie($result->idCategorie);
+            $categoriee = new categorieDTO($result["idCategorie"], $result["libelle"]);
             $categorie[] = $categoriee;
         }
 

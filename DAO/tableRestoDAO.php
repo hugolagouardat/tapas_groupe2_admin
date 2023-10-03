@@ -12,8 +12,7 @@ class tableRestoDAO
         $resultats = json_decode($resultats, true);
         if (is_array($resultats)) {
             foreach ($resultats as $result) {
-                $table = new tableRestoDTO($result->idTable, $result->etat);
-                $table->setIdTable($result->idTable);
+                $table = new tableRestoDTO($result["idTable"], $result["etat"]);
                 $tables[] = $table;
             }
         }
