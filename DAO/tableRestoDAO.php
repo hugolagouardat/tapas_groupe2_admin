@@ -26,16 +26,18 @@ class tableRestoDAO
 		$resultats = json_decode($resultats, true);
 		return $resultats;
 	}
-    public static function update($param){
+    public static function update($id){
 
 
     }
 
-    public static function delete($param){
+    public static function delete($id){
+        $delete = RequestSender::sendDeleteRequest("table/".$id);
+		return $delete; 
 
 
     }
-    public static function insert($param){
+    public static function insert($id){
 
 
     }

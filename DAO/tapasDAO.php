@@ -41,9 +41,7 @@ class tapasDAO
 	}
 	public static function delete($id)
 	{
-		$todelete = json_encode(tapasDAO::get($id));
-		$delete = RequestSender::sendDeleteRequest($todelete);
-		print_r($delete);
+		$delete = RequestSender::sendDeleteRequest("tapas/".$id);
 		return $delete; 
 	}
 }

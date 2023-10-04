@@ -23,21 +23,22 @@ class categorieDAO
 		return $resultats;
 	}
 
-    /*public static function update($param){
+    /*public static function update($id){
         $data = null;
-        if ($param != null) {
-            $data = $param;
+        if ($id != null) {
+            $data = $id;
         }
         RequestSender::sendPutRequest($data);
 
 
     }*/
 
-    public static function delete($param){
-
+    public static function delete($id){
+        $delete = RequestSender::sendDeleteRequest("categories/".$id);
+		return $delete; 
 
     }
-    public static function insert($param){
+    public static function insert($id){
 
 
     }

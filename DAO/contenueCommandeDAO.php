@@ -8,7 +8,7 @@ class contenueCommandeDAO {
 
     public static function getAllcontenues() {
         $contenues = array();
-        $resultats = RequestSender::sendGetRequest("commandes");
+        $resultats = RequestSender::sendGetRequest("contenu");
         $resultats = json_decode($resultats, true);
         foreach ($resultats as $result) {
             $contenu = new contenueCommandeDTO($result["idCommande"], $result["tableId"], $result["effectue"]);
@@ -20,20 +20,23 @@ class contenueCommandeDAO {
 
 	public static function get($id)
 	{
-		$resultats = RequestSender::sendGetRequest("commandes/" . $id);
+		$resultats = RequestSender::sendGetRequest("contenu/" . $id);
 		$resultats = json_decode($resultats, true);
 		return $resultats;
 	}
-    public static function update($param){
+    public static function update($id){
 
 
     }
 
-    public static function delete($param){
+    public static function delete($commandeid){
+        $delete = RequestSender::sendDeleteRequest("contenu/".$commandeid);
+        
+		return $delete; 
 
 
     }
-    public static function insert($param){
+    public static function insert($id){
 
 
     }
