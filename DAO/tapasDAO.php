@@ -1,7 +1,5 @@
 <?php
 include_once("tools/RequestSender.php");
-include_once("DTO/tapasDTO.php");
-
 class tapasDAO
 {
 
@@ -31,25 +29,14 @@ class tapasDAO
 		$tapas = null;
 		$resultats = RequestSender::sendGetRequest("tapas");
 		$resultats = json_decode($resultats, true);
-	{
-		$tapas = null;
-		$resultats = RequestSender::sendGetRequest("tapas");
-		$resultats = json_decode($resultats, true);
 
 		if (is_array($resultats) && count($resultats) > 0) {
 			$result = $resultats[0];
 			$tapas = new tapasDTO($result['idTapas'], $result['image'], $result['prix'], $result['description'], $result['nom']);
 			$tapas->setIdTapas($result['idTapas']);
+			return $tapas;
 		}
-		if (is_array($resultats) && count($resultats) > 0) {
-			$result = $resultats[0];
-			$tapas = new tapasDTO($result['idTapas'], $result['image'], $result['prix'], $result['description'], $result['nom']);
-			$tapas->setIdTapas($result['idTapas']);
-		}
-
-		return $tapas;
 	}
-}
 	public static function delete($id)
 	{
 		$resultat = RequestSender::sendDeleteRequest("tapas");
@@ -57,5 +44,4 @@ class tapasDAO
 		$resultats = json_encode($resultats, true);
 		return $resultats;
 	}
-		
 }
