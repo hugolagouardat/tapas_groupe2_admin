@@ -21,18 +21,11 @@ class commandeDAO
         return $commande;		
 	}
 	public static function get($id)
-    {
-		$commande = null;
-		$resultats = RequestSender::sendGetRequest("commandes");
-		$resultats = json_decode($resultats);
-        if ($resultats != null && sizeof($resultats) > 0) {
-            $result = $resultats[0];
-			$commande= new CommandeDTO($result->idCommande, $result->tableId,$result->effectue);
-			$commande->setIdCommande($result->idCommande);
-        }
-
-        return $commande;
-    }
+	{
+		$resultats = RequestSender::sendGetRequest("commandes/" . $id);
+		$resultats = json_decode($resultats, true);
+		return $resultats;
+	}
     public static function update($param){
 
 

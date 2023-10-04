@@ -20,19 +20,12 @@ class tableRestoDAO
         return $tables;
     }
 
-    public static function get($id)
-    {
-        $table = null;
-        $resultats = RequestSender::sendGetRequest("table");
-        $resultats = json_decode($resultats);
-        if ($resultats != null && sizeof($resultats) > 0) {
-            $result = $resultats[0];
-            $table = new tableRestoDTO($result->idTable, $result->etat);
-            $table->setIdTable($result->idTable);
-        }
-
-        return $table;
-    }
+	public static function get($id)
+	{
+		$resultats = RequestSender::sendGetRequest("table/" . $id);
+		$resultats = json_decode($resultats, true);
+		return $resultats;
+	}
     public static function update($param){
 
 

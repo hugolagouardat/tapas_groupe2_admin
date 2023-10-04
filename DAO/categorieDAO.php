@@ -16,19 +16,12 @@ class categorieDAO
         return $categorie;
         
     }
-    public static function get($id)
-    {
-        $categoriee = null;
-        $resultats = RequestSender::sendGetRequest("categories");
-        $resultats = json_decode($resultats);
-        if ($resultats != null && sizeof($resultats) > 0) {
-            $result = $resultats[0];
-            $categoriee = new categorieDTO($result->idCategorie, $result->libelle);
-            $categoriee->setIdcategorie($result->idCategorie);
-        }
-
-        return $categoriee;
-    }
+	public static function get($id)
+	{
+		$resultats = RequestSender::sendGetRequest("categories/" . $id);
+		$resultats = json_decode($resultats, true);
+		return $resultats;
+	}
 
     /*public static function update($param){
         $data = null;

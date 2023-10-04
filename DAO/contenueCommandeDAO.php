@@ -18,19 +18,12 @@ class contenueCommandeDAO {
         return $contenues;
     }
 
-    public static function get($id) {
-        $contenu = null;
-        $resultats = RequestSender::sendGetRequest("commandes");
-        $resultats = json_decode($resultats);
-
-        if ($resultats != null && sizeof($resultats) > 0) {
-            $result = $resultats[0];
-            $contenu = new contenueCommandeDTO($result->idCommande, $result->tableId, $result->effectue);
-            $contenu->setCommandeId($result->idCommande);
-        }
-
-        return $contenu;
-    }
+	public static function get($id)
+	{
+		$resultats = RequestSender::sendGetRequest("commandes/" . $id);
+		$resultats = json_decode($resultats, true);
+		return $resultats;
+	}
     public static function update($param){
 
 

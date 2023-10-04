@@ -43,8 +43,8 @@ spl_autoload_register('includeFileWithClassName');
 //var_dump(contenueCommandeDAO::get(1));
 //var_dump(CategorieDAO::getAllcategories());
 
-var_dump(tapasDAO::delete(1));
-var_dump(tapasDAO::get(1));
+//var_dump(tapasDAO::delete(1));
+var_dump(tapasDAO::get(2));
 ?>
 	
 </body>

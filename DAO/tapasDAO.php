@@ -26,27 +26,18 @@ class tapasDAO
 
 	public static function get($id)
 	{
-		$tapas = null;
-		$resultats = RequestSender::sendGetRequest("tapas");
+		$resultats = RequestSender::sendGetRequest("tapas/" . $id);
 		$resultats = json_decode($resultats, true);
-
-		if (is_array($resultats) && count($resultats) > 0) {
-			$result = $resultats[0];
-			$tapas = new tapasDTO($result['idTapas'], $result['image'], $result['prix'], $result['description'], $result['nom']);
-			$tapas->setIdTapas($result['idTapas']);
-			return $tapas;
-		}
+		return $resultats;
 	}
 
-	public static function update($param){
+	public static function update($param)
+	{
+	}
 
-
-    }
-
-    public static function insert($param){
-
-
-    }
+	public static function insert($param)
+	{
+	}
 	public static function delete($id)
 	{
 		$resultat = RequestSender::sendDeleteRequest("tapas");

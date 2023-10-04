@@ -18,20 +18,12 @@ class CategorieTapasDAO
         return $CategoriesTapas;
     }
     // fonctionne pas //
-    public static function get($id)
-    {
-        $CategorieTapas = null;
-        $resultat = RequestSender::sendGetRequest("categoriesTapas");
-        $resultats = json_decode($resultat);
-        if ($resultats != null && sizeof($resultats) > 0) {
-            $result = $resultats[0];
-            $CategorieTapas = new categorieTapasDTO($result->CategorieId, $result->tapasId);
-            $CategorieTapas->setCategorieId($result->CategorieId);
-            $CategorieTapas->setTapasId($result->tapasId);
-            
-        }
-        return $CategorieTapas;
-    }
+	public static function get($id)
+	{
+		$resultats = RequestSender::sendGetRequest("categoriesTapas/" . $id);
+		$resultats = json_decode($resultats, true);
+		return $resultats;
+	}
     
     public static function update($param){
 
