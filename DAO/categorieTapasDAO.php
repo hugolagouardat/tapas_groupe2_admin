@@ -1,6 +1,6 @@
 <?php
 include_once("tools/RequestSender.php");
-include_once("tools/CategorieTapasDTO.php");
+include_once("DTO/CategorieTapasDTO.php");
 
 class CategorieTapasDAO
 {

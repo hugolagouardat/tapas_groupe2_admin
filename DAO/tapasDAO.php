@@ -1,5 +1,6 @@
 <?php
 include_once("tools/RequestSender.php");
+include_once("DTO/tapasDTO.php");
 class tapasDAO
 {
 
@@ -40,9 +41,9 @@ class tapasDAO
 	}
 	public static function delete($id)
 	{
-		$resultat = RequestSender::sendDeleteRequest("tapas");
-		$resultats = tapasDAO::get($id);
-		$resultats = json_encode($resultats, true);
-		return $resultats;
+		$todelete = json_encode(tapasDAO::get($id));
+		$delete = RequestSender::sendDeleteRequest($todelete);
+		print_r($delete);
+		return $delete; 
 	}
 }
