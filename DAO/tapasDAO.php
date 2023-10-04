@@ -47,21 +47,13 @@ class tapasDAO
 
 		return $tapas;
 	}
+}
 	public static function delete($id)
 	{
 		$resultat = RequestSender::sendDeleteRequest("tapas");
 		$resultats = tapasDAO::get($id);
 		$resultats = json_encode($resultats, true);
-		return $tapas;
+		return $resultats;
 	}
-	public static function delete($id)
-	{
-		$resultat = RequestSender::sendDeleteRequest("tapas");
-		$resultats = tapasDAO::get($id);
-		$resultats = json_encode($resultats, true);
-
-		return $resultat;
-	}
-		return $resultat;
-	}
+		
 }
