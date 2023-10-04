@@ -32,5 +32,19 @@ class CategorieTapasDAO
         }
         return $CategorieTapas;
     }
+    
+    public static function update($param){
+
+
+    }
+
+    public static function delete($param){
+
+
+    }
+    public static function insert($param){
+
+
+    }
 }
 ?>

@@ -37,6 +37,16 @@ class tapasDAO
 			return $tapas;
 		}
 	}
+
+	public static function update($param){
+
+
+    }
+
+    public static function insert($param){
+
+
+    }
 	public static function delete($id)
 	{
 		$resultat = RequestSender::sendDeleteRequest("tapas");

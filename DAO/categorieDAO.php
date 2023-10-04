@@ -30,7 +30,7 @@ class categorieDAO
         return $categoriee;
     }
 
-    /*public static function updatecategorie($param){
+    /*public static function update($param){
         $data = null;
         if ($param != null) {
             $data = $param;
@@ -40,4 +40,12 @@ class categorieDAO
 
     }*/
 
+    public static function delete($param){
+
+
+    }
+    public static function insert($param){
+
+
+    }
 }
