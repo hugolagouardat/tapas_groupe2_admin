@@ -1,5 +1,7 @@
 <?php
 include_once("tools/RequestSender.php");
+include_once("tools/CategorieTapasDTO.php");
+
 class CategorieTapasDAO
 {
     public static function getAllCategorieTapas()

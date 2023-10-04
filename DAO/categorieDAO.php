@@ -1,5 +1,6 @@
 <?php
 include_once("tools/RequestSender.php");
+include_once("tools/categorieDTO.php");
 class categorieDAO
 {
     public static function getAllcategories()

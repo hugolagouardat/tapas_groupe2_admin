@@ -1,6 +1,8 @@
 <?php
 
 include_once("tools/RequestSender.php");
+include_once("tools/contenueCommandeDTO.php");
+
 
 class contenueCommandeDAO {
 

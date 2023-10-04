@@ -1,5 +1,7 @@
 <?php
 include_once("tools/RequestSender.php");
+include_once("DTO/tapasDTO.php");
+
 class tapasDAO
 {
 
