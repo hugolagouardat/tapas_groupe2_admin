@@ -8,12 +8,12 @@ include_once("DAO/tableRestoDAO.php");
 include_once("DAO/tapasDAO.php");
 
 
-class tableController {
+class tablesController {
 	public function __construct() {
 		$this->includeView();
 	}
 
 	public function includeView() {
-		include_once('table.php');
+		include_once('tables.php');
 	}
 }
