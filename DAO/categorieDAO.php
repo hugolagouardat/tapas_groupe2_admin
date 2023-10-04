@@ -35,6 +35,12 @@ class categorieDAO
             $data = $param;
         }
         RequestSender::sendPutRequest($data);
+<<<<<<< HEAD
+
+
+    }*/
+=======
+>>>>>>> f26b05c9a881375e8eef5b92eb0687587dbf58dc
 
 
     }*/

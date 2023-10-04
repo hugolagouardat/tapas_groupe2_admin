@@ -9,6 +9,7 @@ class tapasDAO
 		$resultats = RequestSender::sendGetRequest("tapas");
 		$resultats = json_decode($resultats, true); // Decoding as an associative array
 
+
 		if (is_array($resultats)) {
 			foreach ($resultats as $result) {
 				// Notice the change from object syntax to array syntax
@@ -18,15 +19,26 @@ class tapasDAO
 			}
 		}
 
+
 		return $tapas;
 	}
+
 
 	public static function get($id)
 	{
 		$tapas = null;
 		$resultats = RequestSender::sendGetRequest("tapas");
 		$resultats = json_decode($resultats, true);
+	{
+		$tapas = null;
+		$resultats = RequestSender::sendGetRequest("tapas");
+		$resultats = json_decode($resultats, true);
 
+		if (is_array($resultats) && count($resultats) > 0) {
+			$result = $resultats[0];
+			$tapas = new tapasDTO($result['idTapas'], $result['image'], $result['prix'], $result['description'], $result['nom']);
+			$tapas->setIdTapas($result['idTapas']);
+		}
 		if (is_array($resultats) && count($resultats) > 0) {
 			$result = $resultats[0];
 			$tapas = new tapasDTO($result['idTapas'], $result['image'], $result['prix'], $result['description'], $result['nom']);
@@ -40,7 +52,16 @@ class tapasDAO
 		$resultat = RequestSender::sendDeleteRequest("tapas");
 		$resultats = tapasDAO::get($id);
 		$resultats = json_encode($resultats, true);
+		return $tapas;
+	}
+	public static function delete($id)
+	{
+		$resultat = RequestSender::sendDeleteRequest("tapas");
+		$resultats = tapasDAO::get($id);
+		$resultats = json_encode($resultats, true);
 
+		return $resultat;
+	}
 		return $resultat;
 	}
 }
