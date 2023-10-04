@@ -29,10 +29,15 @@ class categorieDAO
         return $categoriee;
     }
 
-    public static function updatecategorie(){
-        
+    /*public static function updatecategorie($param){
+        $data = null;
+        if ($param != null) {
+            $data = $param;
+        }
+        RequestSender::sendPutRequest($data);
 
-    }
+
+    }*/
 
 
 }
