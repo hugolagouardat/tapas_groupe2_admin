@@ -1,50 +1,42 @@
+<?php
+
+
+date_default_timezone_set('Europe/Paris');
+
+include_once("tools/RequestSender.php");
+include_once("tools/Rooter.php");
+?>
+
+
 <!DOCTYPE html>
 <html lang="fr">
 
 <head>
+
+	<link rel="stylesheet" type="text/css" href="assets/css/general.css" media="all" />
+	<!--<link rel="icon" type="image/png" href="assets/images/images_site/icone.png" />-->
+
 	<meta charset="utf-8" />
-	<title>Client web</title>
-	<link rel="stylesheet" type="text/css" href="css/style.css" media="all" />
-	<link rel="icon" type="image/png" href="images/favicon.png" />
+	<title>Admin Tappas</title>
 </head>
 
 <body>
-<?php
 
-include_once("tools/Autoloader.php");
-spl_autoload_register('includeFileWithClassName');
- 
-//echo("gettapas<br>");
-//var_dump(tapasDAO::get(1));
-//echo("<br>getAlltapas<br>");
-//var_dump(tapasDAO::getAlltapas());
+	<div class="page-container">
 
+		<div class="page-content">
+			<?php
 
-//echo("<br>getAllTable<br>");
-//var_dump(tableRestoDAO::getAlltable());
-//echo("<br>getTable<br>");
-//var_dump(tableRestoDAO::get(1));
+			include_once("tools/SuperController.php");
 
-//echo("<br>getAllContenuCommande<br>");
-//var_dump(contenueCommandeDAO::getAllcontenues());
-//echo("<br>getContenuCommande<br>");
-//var_dump(contenueCommandeDAO::get(1));
+			$page = "table";
+			
+			SuperController::callPage($page);
 
-//echo("<br>getCommande<br>");
-//var_dump(commandeDAO::get(1));
-//echo("<br>getALLCommande<br>");
-//var_dump(commandeDAO::getAllcommandes());
+			?>
+		</div>
+	</div>
 
-//echo("<br>getcategorie<br>");
-//var_dump(categorieDAO::get(1));
-//echo("<br>getAllCategorie<br>");
-//var_dump(categorieDAO::getAllcategories());
-
-//var_dump(contenueCommandeDAO::get(1));
-var_dump(CategorieDAO::getAllcategories());
-
-?>
-	
 </body>
 
 </html>
