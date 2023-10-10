@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Insertion des liens vers les fichiers CSS et JS de Bootstrap -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
@@ -22,37 +21,56 @@
     $tables = tableRestoDAO::getAlltable();
 
     foreach ($tables as $table) {
-        ?>
-        <div class="card mb-4">
-            <div class="card-header d-flex justify-content-between">
-                <h5 class="mb-0">Table N°<?= $table->getIdTable(); ?></h5>
-                <button class="btn btn-danger">Clean</button>
-            </div>
-            <div class="card-body">
-                <ul class="list-group list-group-horizontal-sm">
+        $commandes = commandeDAO::getAllcommandes();
+        $commandesParTable = array_filter($commandes, function($commande) use ($table) {
+            return $commande->getTableId() == $table->getIdTable();
+        });
+
+        // Vérifie si la table a des commandes
+        if (count($commandesParTable) > 0) {
+            ?>
+            <div class="card mb-4">
+                <div class="card-header d-flex justify-content-between">
+                    <h5 class="mb-0">Table N°<?= $table->getIdTable(); ?></h5>
+                    <button class="btn btn-danger">Clean</button>
+                </div>
+                <div class="card-body">
                     <?php
-                    $commandes = commandeDAO::getAllcommandes();
-                    foreach ($commandes as $commande) {
-                        // Je suppose que l'identifiant de la table est lié à la commande d'une manière ou d'une autre, vous devrez ajuster cela selon votre structure de base de données.
-                        if ($commande->getTableId() == $table->getIdTable()) {
-                            $contenues = contenueCommandeDAO::getAllcontenues();
-                            foreach ($contenues as $contenu) {
-                                if ($contenu->getCommandeId() == $commande->getIdCommande()) {
-                                    $tapas = tapasDAO::get($contenu->getCommandeId()); // A ajuster selon la structure exacte
-                                    echo "<li class='list-group-item d-flex justify-content-between align-items-center'>";
-                                    echo $tapas['nom'];
-                                    echo "<span class='badge badge-primary badge-pill'>" . "x" . $contenu->getNombre() . "</span>";
-                                    echo "<button class='btn btn-success ml-2'>✓</button>";
-                                    echo "</li>";
-                                }
+                    foreach ($commandesParTable as $commande) {
+                        $contenues = contenueCommandeDAO::getAllcontenues();
+                        $contenuesParCommande = array_filter($contenues, function($contenu) use ($commande) {
+                            return $contenu->getCommandeId() == $commande->getIdCommande();
+                        });
+
+                        // Vérifie si la commande a des contenus
+                        if (count($contenuesParCommande) > 0) {
+                            echo "<h6>Commande N°" . $commande->getIdCommande() . "</h6>";
+                            echo "<ul class='list-group mb-3'>";
+
+                            foreach ($contenuesParCommande as $contenu) {
+                                $tapas = tapasDAO::get($contenu->getTapasId());
+                                echo "<li class='list-group-item d-flex justify-content-between align-items-center'>";
+                                echo $tapas['nom'];
+                                echo "<span class='badge badge-primary badge-pill'>" . $contenu->getNombre() . "</span>";
+                                echo "</li>";
                             }
+
+                            if ($commande->getEffectue()) {
+                                // Si la commande est effectuée
+                                echo "<button class='btn btn-success'>Commande effectuée</button>";
+                            } else {
+                                // Si la commande n'est pas encore effectuée
+                                echo "<button class='btn btn-primary'>Marquer comme effectuée</button>";
+                            }
+
+                            echo "</ul>";
                         }
                     }
                     ?>
-                </ul>
+                </div>
             </div>
-        </div>
-        <?php
+            <?php
+        }
     }
     ?>
 </div>
