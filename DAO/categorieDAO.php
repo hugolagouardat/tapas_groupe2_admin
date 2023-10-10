@@ -23,23 +23,26 @@ class categorieDAO
 		return $resultats;
 	}
 
-    /*public static function update($id){
-        $data = null;
-        if ($id != null) {
-            $data = $id;
-        }
-        RequestSender::sendPutRequest($data);
+    public static function update(){
 
 
-    }*/
 
+    }
     public static function delete($id){
         $delete = RequestSender::sendDeleteRequest("categories/".$id);
 		return $delete; 
 
     }
-    public static function insert($id){
-
+   /* public static function insert($newcategorie_id,$newcategorie_libelle){
+        $data = array(
+            "newcategorie_id" => $newcategorie_id,
+            "newcategorie_libelle" => $newcategorie_libelle
+        );
+        
+        $json_data = json_encode($data);
+        var_dump($json_data);
+        $inserted = RequestSender::sendPostRequest("categories/",$json_data);
+        return $inserted;
+    }*/
 
     }
-}

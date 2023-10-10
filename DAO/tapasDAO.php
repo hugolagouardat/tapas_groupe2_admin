@@ -16,6 +16,10 @@ class tapasDAO
 				// Notice the change from object syntax to array syntax
 				$tapase = new tapasDTO($result['idTapas'], $result['image'], $result['prix'], $result['description'], $result['nom']);
 				$tapase->setIdTapas($result['idTapas']);
+				$tapase->setImage($result['image']);
+				$tapase->setPrix($result['prix']);
+				$tapase->setDescription($result['description']);
+				$tapase->setNom($result['nom']);
 				$tapas[] = $tapase;
 			}
 		}
@@ -29,14 +33,16 @@ class tapasDAO
 	{
 		$resultats = RequestSender::sendGetRequest("tapas/" . $id);
 		$resultats = json_decode($resultats, true);
+		
 		return $resultats;
 	}
 
-	public static function update($param)
+	public static function update($id)
 	{
+		
 	}
 
-	public static function insert($param)
+	public static function insert($id)
 	{
 	}
 	public static function delete($id)
