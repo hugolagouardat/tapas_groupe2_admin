@@ -11,7 +11,7 @@ class contenueCommandeDAO {
         $resultats = RequestSender::sendGetRequest("contenu");
         $resultats = json_decode($resultats, true);
         foreach ($resultats as $result) {
-            $contenu = new contenueCommandeDTO($result["idCommande"], $result["tableId"], $result["effectue"]);
+            $contenu = new contenueCommandeDTO($result["commandeId"], $result["tapasId"], $result["nombre"]);
             $contenues[] = $contenu;
         }
 

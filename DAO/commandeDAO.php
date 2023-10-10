@@ -13,7 +13,7 @@ class commandeDAO
         $resultats = json_decode($resultats, true);
         if (is_array($resultats)) {
         foreach ($resultats as $result) {
-            $commandee = new CommandeDTO($result->commandeId, $result->tableId, $result->effectue);
+            $commandee = new CommandeDTO($result["idCommande"], $result["tableId"], $result["effectue"]);
             $commande[] = $commandee;
         }
     }
