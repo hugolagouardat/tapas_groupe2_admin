@@ -29,7 +29,7 @@ include_once("tools/Rooter.php");
 
 			include_once("tools/SuperController.php");
 
-			$page = "tables";
+			$page = "menu";
 			
 			SuperController::callPage($page);
 
