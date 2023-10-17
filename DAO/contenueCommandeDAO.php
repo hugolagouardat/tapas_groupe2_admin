@@ -24,11 +24,19 @@ class contenueCommandeDAO {
 		$resultats = json_decode($resultats, true);
 		return $resultats;
 	}
-    public static function update($id){
+    public static function update($commandeId,$tapasId,$nombre){
+        $data = array(
+            "commandeId" => $commandeId,
+            "tapasId" => $tapasId,
+            "nombre"=>$nombre
+        );
+        
+        var_dump($data);
+        $inserted = RequestSender::sendPutRequest("categories",$data);
+        return $inserted;
 
 
     }
-
     public static function delete($commandeid){
         $delete = RequestSender::sendDeleteRequest("contenu/".$commandeid);
         
@@ -36,7 +44,16 @@ class contenueCommandeDAO {
 
 
     }
-    public static function insert($id){
+    public static function insert($commandeId,$tapasId,$nombre){
+        $data = array(
+            "commandeId" => $commandeId,
+            "tapasId" => $tapasId,
+            "nombre"=>$nombre
+        );
+        
+        var_dump($data);
+        $inserted = RequestSender::sendPostRequest("categories",$data);
+        return $inserted;
 
 
     }

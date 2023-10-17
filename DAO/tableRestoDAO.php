@@ -26,7 +26,15 @@ class tableRestoDAO
 		$resultats = json_decode($resultats, true);
 		return $resultats;
 	}
-    public static function update($id){
+    public static function update($idTable,$etat){
+        $data = array(
+            "idTable" => $idTable,
+            "etat" => $etat,
+        );
+        
+        var_dump($data);
+        $inserted = RequestSender::sendPutRequest("categories",$data);
+        return $inserted;
 
 
     }
@@ -37,7 +45,15 @@ class tableRestoDAO
 
 
     }
-    public static function insert($id){
+    public static function insert($idTable,$etat){
+        $data = array(
+            "idTable" => $idTable,
+            "etat" => $etat,
+        );
+        
+        var_dump($data);
+        $inserted = RequestSender::sendPostRequest("categories",$data);
+        return $inserted;
 
 
     }

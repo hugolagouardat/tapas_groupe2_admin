@@ -37,14 +37,36 @@ class tapasDAO
 		return $resultats;
 	}
 
-	public static function update($id)
-	{
-		
-	}
+    public static function update($idTapas,$image,$prix,$description,$nom){
+        $data = array(
+            "idTapas" => $idTapas,
+            "image" => $image,
+			"prix"=>$prix,
+			"description"=>$description,
+			"nom"=>$nom
+        );
+        
+        var_dump($data);
+        $inserted = RequestSender::sendPutRequest("categories",$data);
+        return $inserted;
 
-	public static function insert($id)
-	{
-	}
+
+    }
+    public static function insert($idTapas,$image,$prix,$description,$nom){
+        $data = array(
+            "idTapas" => $idTapas,
+            "image" => $image,
+			"prix"=>$prix,
+			"description"=>$description,
+			"nom"=>$nom
+        );
+        
+        var_dump($data);
+        $inserted = RequestSender::sendPostRequest("categories",$data);
+        return $inserted;
+
+
+    }
 	public static function delete($id)
 	{
 		$delete = RequestSender::sendDeleteRequest("tapas/".$id);

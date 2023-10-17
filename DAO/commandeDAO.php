@@ -26,7 +26,16 @@ class commandeDAO
 		$resultats = json_decode($resultats, true);
 		return $resultats;
 	}
-    public static function update($id){
+    public static function update($tableId,$effectue,$idCommande){
+        $data = array(
+            "tableId" => $tableId,
+            "effectue" => $effectue,
+            "idCommande"=>$idCommande
+        );
+        
+        var_dump($data);
+        $inserted = RequestSender::sendPutRequest("categories",$data);
+        return $inserted;
 
 
     }
@@ -37,7 +46,15 @@ class commandeDAO
 
 
     }
-    public static function insert($id){
+    public static function insert($tableId,$effectue){
+        $data = array(
+            "tableId" => $tableId,
+            "effectue" => $effectue
+        );
+        
+        var_dump($data);
+        $inserted = RequestSender::sendPostRequest("categories",$data);
+        return $inserted;
 
 
     }

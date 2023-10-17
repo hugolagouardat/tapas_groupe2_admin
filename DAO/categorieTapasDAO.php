@@ -25,8 +25,15 @@ class CategorieTapasDAO
 		return $resultats;
 	}
     
-    public static function update($id){
-
+    public static function update($tapasId,$categorieId){
+        $data = array(
+            "tapasId" => $tapasId,
+            "categorieId" => $categorieId
+        );
+        
+        var_dump($data);
+        $inserted = RequestSender::sendPutRequest("categories",$data);
+        return $inserted;
 
     }
 
@@ -35,9 +42,15 @@ class CategorieTapasDAO
 		return $delete; 
 
     }
-    public static function insert($id){
-
-
+    public static function insert($tapasId,$categorieId){
+        $data = array(
+            "tapasId" => $tapasId,
+            "categorieId" => $categorieId
+        );
+        
+        var_dump($data);
+        $inserted = RequestSender::sendPostRequest("categories",$data);
+        return $inserted;
     }
 }
 ?>

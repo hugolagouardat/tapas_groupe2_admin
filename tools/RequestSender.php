@@ -1,7 +1,7 @@
 <?php
 
 class RequestSender {
-	private static $webservice_url = "http://localhost/projet/restaurant_tapas/tapas_groupe2_webservice/src/";
+	private static $webservice_url = "http://localhost/projet/restaurant_tapas/tapas_groupe2_webservice/api/";
 
 	// envoi de la requête avec GET (récupération de données)
 	public static function sendGetRequest($url_request) {
@@ -43,7 +43,7 @@ class RequestSender {
 		curl_setopt($ch, CURLOPT_POST, true);
 		curl_setopt($ch, CURLOPT_POSTFIELDS, $data_encoded);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($ch, CURLOPT_PROXY, '');
+		curl_setopt($ch, CURLOPT_PROXY, ''); 
 		curl_setopt(
 			$ch,
 			CURLOPT_HTTPHEADER,
