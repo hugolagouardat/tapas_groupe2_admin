@@ -21,6 +21,15 @@ include_once("tools/Rooter.php");
 </head>
 
 <body>
+<?php
+	
+	if (!empty($_GET['page'])) {
+		$page = $_GET['page'];
+	} else {
+		$page = "tables";
+	}
+
+	?>
 
 	<div class="page-container">
 
@@ -29,7 +38,7 @@ include_once("tools/Rooter.php");
 
 			include_once("tools/SuperController.php");
 
-			$page = "menu";
+			
 			
 			SuperController::callPage($page);
 
