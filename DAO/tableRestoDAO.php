@@ -13,7 +13,7 @@ class tableRestoDAO
         $resultats = json_decode($resultats, true);
         if (is_array($resultats)) {
             foreach ($resultats as $result) {
-                $table = new tableRestoDTO($result["idTable"], $result["etat"]);
+                $table = new tableRestoDTO($result["idTable"],$result["numeroTable"], $result["etat"]);
                 $tables[] = $table;
             }
         }
@@ -26,9 +26,10 @@ class tableRestoDAO
 		$resultats = json_decode($resultats, true);
 		return $resultats;
 	}
-    public static function update($idTable,$etat){
+    public static function update($idTable,$numeroTable,$etat){
         $data = array(
             "idTable" => $idTable,
+            "numeroTable"=> $numeroTable,
             "etat" => $etat,
         );
         
@@ -45,9 +46,10 @@ class tableRestoDAO
 
 
     }
-    public static function insert($idTable,$etat){
+    public static function insert($idTable,$numeroTable,$etat){
         $data = array(
             "idTable" => $idTable,
+            "numeroTable"=> $numeroTable,
             "etat" => $etat,
         );
         

@@ -3,11 +3,13 @@ class tableRestoDTO implements JsonSerializable
 {
 
     private $idTable;
+    private $numeroTable;
     private $etat;
 
-    function __construct($idTable, $etat)
+    function __construct($idTable,$numeroTable, $etat)
     {
         $this->idTable = $idTable;
+        $this->numeroTable = $numeroTable;
         $this->etat = $etat;
     }
     /**
@@ -27,6 +29,20 @@ class tableRestoDTO implements JsonSerializable
     {
         $this->idTable = $idTable;
 
+        return $this;
+    }
+        /**
+     * Get the value of numeroTable
+     */
+    public function getNumeroTable() {
+        return $this->numeroTable;
+    }
+
+    /**
+     * Set the value of numeroTable
+     */
+    public function setNumeroTable($numeroTable) {
+        $this->numeroTable = $numeroTable;
         return $this;
     }
 
@@ -54,7 +70,10 @@ class tableRestoDTO implements JsonSerializable
     {
         return array(
             'idTable' => $this->idTable,
+            'numeroTable' => $this->numeroTable,
             'etat' => $this->etat
         );
     }
+
+
 }
