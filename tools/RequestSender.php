@@ -1,7 +1,7 @@
 <?php
 
 class RequestSender {
-	private static $webservice_url = "http://localhost/projet/restaurant_tapas/tapas_groupe2_webservice/api/";
+	private static $webservice_url = "localhost:3000/api/";
 
 	// envoi de la requête avec GET (récupération de données)
 	public static function sendGetRequest($url_request) {
