@@ -4,11 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-        crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <title>Tables</title>
 </head>
 
@@ -39,7 +36,8 @@
                 <h5 class="mb-0">Recapitulatif</h5>
                 <div>
                     <button href="index.php?page=menu" class="btn btn-warning">Modification menu</button>
-                    <button class="btn btn-primary">Nouvelle table</button>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Nouvelle table</button>
                 </div>
 
             </div>
@@ -65,15 +63,15 @@
                 });
 
                 // Vérifie si la table a des commandes
-                ?>
+            ?>
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="card h-100">
                         <div class="card-header d-flex justify-content-between">
                             <h5 class="mb-0">Table N°
-                                <?= $table->getIdTable(); ?>
+                                <?= $table->getNumeroTable(); ?>
                             </h5>
                             <div>
-                                <button class="btn btn-warning btn-sm mr-1">Clear</button>
+                                <button class="btn btn-warning btn-sm mr-1 clear-btn" data-tableid="<?= $table->getIdTable(); ?>">Clear</button>
                                 <button class="btn btn-danger btn-sm mr-1">Suppr</button>
                                 <button class="btn btn-primary btn-sm">Modif</button>
                             </div>
@@ -106,12 +104,13 @@
 
                                     if ($commande->getEffectue()) {
                                         // Si la commande est effectuée
-                                        echo "<button class='btn btn-success'>Commande effectuée</button>";
+                                        echo "<button data-id='".$commande->getIdCommande()."' data-tableid='".$commande->getTableId()."' class='btn btn-success change-effectue'>Commande effectuée</button>";
                                     } else {
                                         // Si la commande n'est pas encore effectuée
-                                        echo "<button class='btn btn-primary'>Marquer comme effectuée</button>";
+                                        echo "<button data-id='".$commande->getIdCommande()."' data-tableid='".$commande->getTableId()."' class='btn btn-primary change-effectue'>Marquer comme effectuée</button>";
                                     }
-
+                                    
+                                    
                                     echo "</ul>";
                                 }
                             }
@@ -119,18 +118,12 @@
                         </div>
                     </div>
                 </div>
-                <?php
+            <?php
 
             }
             ?>
         </div>
     </div>
-
-
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        Launch demo modal
-    </button>
 
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -145,12 +138,12 @@
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">numéro de la nouvelle table</label>
                             <input type="text" class="form-control" id="numnouvtable">
-                        
+
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" id="submit" class="btn btn-primary">ajouter table</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Anuller</button>
+                    <button type="submit" id="submit" class="btn btn-primary">Valider</button>
                 </div>
             </div>
         </div>
@@ -158,4 +151,4 @@
     <script src="pages/tables/table.js"></script>
 </body>
 
-</html> 
+</html>

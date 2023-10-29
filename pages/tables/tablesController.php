@@ -15,6 +15,6 @@ class tablesController {
 
 	public function includeView() {
 		//include_once('tables.php');
-		include_once('tables copy.php');
+		include_once('tablesCopy.php');
 	}
 }

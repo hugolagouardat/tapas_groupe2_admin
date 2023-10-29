@@ -33,7 +33,6 @@ class commandeDAO
             "idCommande"=>$idCommande
         );
         
-        var_dump($data);
         $inserted = RequestSender::sendPutRequest("categories",$data);
         return $inserted;
 
@@ -52,7 +51,6 @@ class commandeDAO
             "effectue" => $effectue
         );
         
-        var_dump($data);
         $inserted = RequestSender::sendPostRequest("categories",$data);
         return $inserted;
 
