@@ -24,7 +24,6 @@ class tapasDAO
 			}
 		}
 
-
 		return $tapas;
 	}
 
@@ -46,7 +45,6 @@ class tapasDAO
 			"nom"=>$nom
         );
         
-        var_dump($data);
         $inserted = RequestSender::sendPutRequest("categories",$data);
         return $inserted;
 
@@ -61,7 +59,6 @@ class tapasDAO
 			"nom"=>$nom
         );
         
-        var_dump($data);
         $inserted = RequestSender::sendPostRequest("categories",$data);
         return $inserted;
 

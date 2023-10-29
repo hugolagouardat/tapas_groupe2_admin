@@ -35,7 +35,7 @@
             <div class="card-header d-flex justify-content-between">
                 <h5 class="mb-0">Recapitulatif</h5>
                 <div>
-                    <button href="index.php?page=menu" class="btn btn-warning">Modification menu</button>
+                <a href="index.php?page=menu" class="btn btn-warning">Modification menu</a>
                     <!-- Button trigger modal -->
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Nouvelle table</button>
                 </div>
@@ -71,7 +71,7 @@
                                 <?= $table->getNumeroTable(); ?>
                             </h5>
                             <div>
-                                <button class="btn btn-warning btn-sm mr-1 clear-btn" data-tableid="<?= $table->getIdTable(); ?>">Clear</button>
+                                <button class="btn btn-warning btn-sm mr-1 clear-btn" >Clear</button>
                                 <button class="btn btn-danger btn-sm mr-1">Suppr</button>
                                 <button class="btn btn-primary btn-sm">Modif</button>
                             </div>
@@ -104,10 +104,20 @@
 
                                     if ($commande->getEffectue()) {
                                         // Si la commande est effectuée
-                                        echo "<button data-id='".$commande->getIdCommande()."' data-tableid='".$commande->getTableId()."' class='btn btn-success change-effectue'>Commande effectuée</button>";
+                                        echo "<form action='index.php?page=update_commande.php' method='post'>";
+                                        echo "<input type='hidden' name='idCommande' value='".$commande->getIdCommande()."'>";
+                                        echo "<input type='hidden' name='tableId' value='".$commande->getTableId()."'>";
+                                        echo "<input type='hidden' name='effectue' value='0'>";  // Pour marquer comme non effectuée
+                                        echo "<button type='submit' class='btn btn-success change-effectue'>Commande effectuée</button>";
+                                        echo "</form>";
                                     } else {
                                         // Si la commande n'est pas encore effectuée
-                                        echo "<button data-id='".$commande->getIdCommande()."' data-tableid='".$commande->getTableId()."' class='btn btn-primary change-effectue'>Marquer comme effectuée</button>";
+                                        echo "<form action='index.php?page=update_commande.php' method='post'>";
+                                        echo "<input type='hidden' name='idCommande' value='".$commande->getIdCommande()."'>";
+                                        echo "<input type='hidden' name='tableId' value='".$commande->getTableId()."'>";
+                                        echo "<input type='hidden' name='effectue' value='1'>";  // Pour marquer comme effectuée
+                                        echo "<button type='submit' class='btn btn-primary change-effectue'>Marquer comme effectuée</button>";
+                                        echo "</form>";
                                     }
                                     
                                     
